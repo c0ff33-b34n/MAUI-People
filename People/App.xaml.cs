@@ -9,5 +9,6 @@ public partial class App : Application
         InitializeComponent();
 
         PersonRepo = repo;
+        MainPage = new AppShell();
     }
 }
