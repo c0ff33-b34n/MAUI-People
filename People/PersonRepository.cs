@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQLite;
+using People.Models;
 
 namespace People
 {
@@ -12,11 +9,15 @@ namespace People
 
         public string StatusMessage { get; set; }
 
-        // TODO: Add variable for the SQLite connection
+        private SQLiteConnection conn;
 
         private void Init()
         {
-            // TODO: Add code to initialize the repository         
+            if (conn != null)
+                return;
+
+            conn = new SQLiteConnection(dbPath);
+            conn.CreateTable<Person>();
         }
 
         public PersonRepository(string dbPath)
